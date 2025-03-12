@@ -1,0 +1,94 @@
+# Install needed packages
+install.packages("effsize")
+
+# Load necessary libraries
+library(dplyr)
+library(ggplot2)
+library(effsize)  # For Cohen's d
+
+# Define absolute paths
+yearly_path <- "/Users/sebastianspranger/Documents/GitHub/Project--Dr.-Semmelweis-and-the-Importance-of-Handwashing/workspace/data/yearly_deaths_by_clinic.csv"
+monthly_path <- "/Users/sebastianspranger/Documents/GitHub/Project--Dr.-Semmelweis-and-the-Importance-of-Handwashing/workspace/data/monthly_deaths.csv"
+
+# Load datasets
+yearly <- read.csv(yearly_path)
+monthly <- read.csv(monthly_path)
+
+# Convert date column to Date format
+monthly <- monthly %>%
+  mutate(date = as.Date(date))
+
+# Compute proportion of deaths
+yearly <- yearly %>%
+  mutate(proportion_deaths = deaths / births)
+
+monthly <- monthly %>%
+  mutate(proportion_deaths = deaths / births)
+
+# Define handwashing introduction date
+handwashing_start <- as.Date("1847-06-01")
+
+# Add binary indicator for handwashing introduction
+monthly <- monthly %>%
+  mutate(handwashing_started = date >= handwashing_start)
+
+# Plot yearly mortality proportion by clinic
+ggplot(yearly, aes(x = year, y = proportion_deaths, color = clinic)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  labs(
+    title = "Yearly Proportion of Deaths by Clinic",
+    x = "Year",
+    y = "Proportion of Deaths",
+    color = "Clinic"
+  ) +
+  theme_minimal()
+
+# Plot monthly mortality proportions before and after handwashing
+ggplot(monthly, aes(x = date, y = proportion_deaths, color = handwashing_started)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  scale_color_manual(values = c("red", "blue"), labels = c("Before", "After")) +
+  labs(
+    title = "Effect of Handwashing on Mortality in Clinic 1",
+    x = "Date",
+    y = "Proportion of Deaths",
+    color = "Handwashing Started"
+  ) +
+  theme_minimal()
+
+# Compute mean mortality before and after handwashing
+monthly_summary <- monthly %>%
+  group_by(handwashing_started) %>%
+  summarise(avg_mortality = mean(proportion_deaths))
+
+# Print formatted summary
+cat("\n**Mean Mortality Rates Before and After Handwashing:**\n")
+print(monthly_summary)
+
+# Calculate and display covariance
+cov_value <- cov(monthly$handwashing_started, monthly$proportion_deaths)
+cat("\nCovariance between Handwashing and Mortality Rate:", round(cov_value, 6), "\n")
+
+# Calculate and display correlation coefficient
+cor_value <- cor(monthly$handwashing_started, monthly$proportion_deaths, method = "pearson")
+cat("\nPearson Correlation between Handwashing and Mortality Rate:", round(cor_value, 6), "\n")
+
+# Perform Welch's t-test
+t_test_result <- t.test(proportion_deaths ~ handwashing_started, data = monthly, var.equal = FALSE)
+cat("\n**Welch Two Sample t-Test Results:**\n")
+print(t_test_result)
+
+# Linear regression analysis
+model <- lm(proportion_deaths ~ handwashing_started, data = monthly)
+cat("\n**Linear Regression Summary:**\n")
+print(summary(model))
+
+# Cohen's d for effect size
+cohen_d_result <- cohen.d(
+  monthly$proportion_deaths[monthly$handwashing_started == TRUE],
+  monthly$proportion_deaths[monthly$handwashing_started == FALSE]
+)
+
+cat("\n**Cohen's d Effect Size:**\n")
+print(cohen_d_result)
