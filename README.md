@@ -1,67 +1,109 @@
-![ignaz_semmelweis_1860](https://github.com/user-attachments/assets/ae28b57b-0ed6-4494-a559-8e94d435b9a1)
+# 🧼 Dr. Semmelweis & The Life-Saving Power of Handwashing 🚑  
 
+![Ignaz Semmelweis 1860](https://github.com/user-attachments/assets/ae28b57b-0ed6-4494-a559-8e94d435b9a1)  
 
-### **Abstract**
-Dr. Ignaz Semmelweis, a Hungarian physician working at the Vienna General Hospital during the mid-19th century, significantly impacted medical practices through his pioneering investigation into hand hygiene. While serving in the maternity wards, Semmelweis observed a high incidence of puerperal fever (childbed fever), which led to substantial mortality rates among mothers. Despite the prevailing medical ignorance regarding bacteria at the time, Semmelweis identified contaminated hands of medical staff as the primary transmission route of infections. On June 1, 1847, he mandated rigorous handwashing procedures, a groundbreaking and initially controversial measure. This research revisits Semmelweis' historical data, employing modern statistical techniques to quantify the impact of implementing hand hygiene protocols on maternal mortality rates, thus providing empirical validation of his seminal observations.
+## **📜 Abstract**  
+In the mid-19th century, **Dr. Ignaz Semmelweis**, a Hungarian physician, revolutionized medical hygiene by proving that **handwashing drastically reduced maternal mortality rates**. Working at the Vienna General Hospital, he observed that **puerperal fever (childbed fever) was being spread by doctors delivering babies after performing autopsies—without washing their hands**. In **June 1847**, Semmelweis introduced **mandatory handwashing**, leading to a **dramatic drop in mortality rates**.  
 
-### **Introduction**
-Ignaz Semmelweis' contributions to medical hygiene emerged from meticulous observation at Vienna General Hospital, where high maternal mortality rates from puerperal fever posed a critical health crisis. In the absence of microbiological knowledge, Semmelweis intuitively linked poor hand hygiene among medical personnel to increased infections and deaths. By introducing compulsory handwashing in June 1847, he dramatically altered the outcomes in maternity wards. This study critically reanalyzes Semmelweis' original dataset, applying statistical methodologies to affirm and measure the significance of hand hygiene interventions on patient survival, thus underscoring the enduring value of his discovery in contemporary medical practice.
+This project **revisits Semmelweis’ original data** and applies **modern statistical analysis** to quantify the impact of hand hygiene on patient survival.  
 
-### **Data and Methodology**
-#### **1. Data Sources**
-The data is stored as two CSV files within the `data` folder.
+---
 
-`yearly_deaths_by_clinic.csv` contains the number of women giving birth at the two clinics at the Vienna General Hospital between the years 1841 and 1846.
+## **📖 Introduction**  
+**How many lives could have been saved if doctors had trusted the data?**  
 
-| Column | Description |
-|--------|-------------|
-|`year`  |Years (1841-1846)|
-|`births`|Number of births|
-|`deaths`|Number of deaths|
-|`clinic`|Clinic 1 or clinic 2|
+During the 1840s, **maternity ward mortality rates were alarmingly high**, but the cause was unknown. **Germ theory didn’t exist yet**, and many doctors believed illnesses were caused by "bad air" rather than poor hygiene.  
 
-`monthly_deaths.csv` contains data from 'Clinic 1' of the hospital where most deaths occurred.
+Semmelweis' **data-driven approach** challenged these assumptions. This project **analyzes his findings using statistical and data visualization techniques**, proving that **handwashing was the key to reducing mortality**—even before bacteria were discovered.  
 
-| Column | Description |
-|--------|-------------|
-|`date`|Date (YYYY-MM-DD)
-|`births`|Number of births|
-|`deaths`|Number of deaths|
+---
 
-The handwashing protocol was introduced on **June 1, 1847**, and serves as the intervention point for comparison.
+## **📊 Data & Methodology**  
+### **1️⃣ Data Sources**  
+The dataset consists of two CSV files stored in the `data/` folder.
 
-#### **2. Analytical Approach**
-Key statistical techniques applied in this study include:
-- **Descriptive Statistics:** Calculation of mortality rates before and after the intervention.
-- **t-Test:** Assessment of statistical significance in mortality rate changes.
-- **Linear Regression Analysis:** Estimation of the effect size of handwashing on mortality.
-- **Cohen’s d:** Measurement of the magnitude of the observed effect.
-- **Correlation Analysis:** Determination of the relationship between handwashing and mortality reduction.
+| 📁 Dataset | 🔍 Description |
+|------------|-----------------------------------------------------|
+| `yearly_deaths_by_clinic.csv` | Birth and mortality data from **two clinics** (1841-1846). |
+| `monthly_deaths.csv` | Monthly birth and death data from **Clinic 1**, where most deaths occurred. |
 
+📌 **Key Event:** The **handwashing protocol was introduced on June 1, 1847**, making it a crucial intervention point for analysis.  
 
+---
 
-### **Results**
-#### **1. Mortality Proportion Before and After Handwashing**
+### **2️⃣ Analytical Approach**  
+This study applies **statistical and data science techniques** to quantify the impact of hand hygiene on mortality rates.
 
-![image](https://github.com/user-attachments/assets/f59edc71-5e68-4ed9-9a0f-48bb9ff722a2)
+- **📊 Descriptive Statistics:** Mortality rates before and after intervention.
+- **📈 t-Test:** Statistical significance of mortality rate reduction.
+- **📉 Regression Analysis:** Measuring handwashing’s impact on survival.
+- **📊 Cohen’s d:** Quantifying effect size.
+- **🔍 Correlation Analysis:** Relationship between handwashing and mortality rates.
 
-| Handwashing Implemented | Mean Mortality Rate (%) |
-|------------------------|-----------------------|
-| **No** | **10.5** |
-| **Yes** | **2.1** |
+---
 
-Following the introduction of handwashing, mortality rates decreased significantly from **10.5% to 2.1%**, underscoring the effectiveness of hygiene practices.
+## **📈 Results & Key Findings**  
+### **1️⃣ Mortality Rates Before & After Handwashing**  
+Following the introduction of hand hygiene, **mortality dropped from 10.5% to 2.1%**!  
 
-#### **2. Statistical Tests and Findings**
-- **t-Test Results:** A Welch Two-Sample t-test reveals a statistically significant difference between pre- and post-intervention mortality rates (p-value = **1.445e-15**), confirming a robust effect.
-- **Regression Analysis:** The linear regression model estimates a **8.4% reduction** in mortality attributed to handwashing (p-value = **2.99e-07**), indicating a strong association.
-- **Effect Size (Cohen’s d):** A value of **-1.334** denotes a **large effect size**, reinforcing the substantial impact of handwashing practices on patient outcomes.
-- **Correlation Coefficient:** The negative correlation between handwashing and mortality further substantiates the protective role of sanitation measures.
+![Mortality Rate Drop](https://github.com/user-attachments/assets/f59edc71-5e68-4ed9-9a0f-48bb9ff722a2)  
 
-### **Discussion**
-The empirical evidence strongly supports the hypothesis that handwashing significantly reduces mortality in clinical settings. The statistical significance and large effect size highlight the necessity of rigorous hygiene protocols to prevent the transmission of infectious diseases. These findings align with contemporary medical knowledge, reinforcing the importance of hand hygiene as a fundamental public health measure.
+| 🚑 **Handwashing Implemented?** | 🏥 **Mean Mortality Rate (%)** |
+|----------------------|---------------------|
+| ❌ **No (Before 1847)** | **10.5%** |
+| ✅ **Yes (After 1847)** | **2.1%** |
 
-### **Conclusion**
-The introduction of hand hygiene practices in 1847 led to a **statistically significant and clinically meaningful reduction in mortality rates**. This study contributes to the broader discourse on the role of sanitation in healthcare, emphasizing the continued relevance of historical lessons in modern medical practice. Future research should explore additional determinants influencing patient survival rates beyond hygiene interventions.
+📌 **This data confirms that handwashing reduced mortality by nearly 80%.**  
 
+---
 
+### **2️⃣ Statistical Tests & Findings**  
+**📊 Statistical significance:**  
+✔ **t-Test:** p-value = **1.445e-15** (highly significant!)  
+✔ **Regression Analysis:** 8.4% mortality reduction (p = **2.99e-07**)  
+✔ **Effect Size (Cohen’s d):** **-1.334** (large effect!)  
+✔ **Correlation:** Strong **negative correlation** between handwashing & mortality  
+
+🔥 **Conclusion:** The results confirm that **handwashing had a massive impact on reducing deaths**, even before germ theory was accepted.
+
+---
+
+## **📢 Discussion & Key Takeaways**  
+1️⃣ **Data saved lives—even when people ignored it.**  
+   - Despite overwhelming evidence, many doctors **refused to believe** Semmelweis' findings, delaying progress.  
+
+2️⃣ **Statistical proof is crucial for medical advancements.**  
+   - **Evidence-based policies** (like handwashing & vaccines) have saved millions of lives since then.  
+
+3️⃣ **Clean hands = fewer deaths.**  
+   - This historical case proves the importance of **basic hygiene in preventing infectious diseases**.  
+
+---
+
+## **📝 Conclusion**  
+This analysis confirms that **Dr. Semmelweis’ handwashing policy drastically reduced mortality rates**, even before germ theory was known. His work laid the foundation for **modern hygiene practices in hospitals**.  
+
+👉 This project is a testament to **why data science matters in real-world decision-making**—sometimes, **the data is right before our eyes, and we just need to act on it.**  
+
+---
+
+## **💻 How to Run the Analysis**  
+To reproduce this analysis:  
+```bash
+# Clone the repository
+git clone https://github.com/Spranger-Sebastian/R-Project--Dr.-Semmelweis-and-the-Importance-of-Handwashing.git
+cd handwashing-analysis
+
+# Open R and run the script
+Rscript analysis.R
+
+```
+
+## 🌍 Connect & Contribute  
+
+💡 **Feedback or suggestions?** Feel free to **fork this repo, open an issue, or connect with me on LinkedIn!**  
+
+📧 **Email:** [sebastianspranger@icloud.com](mailto:sebastianspranger@icloud.com)  
+💼 **LinkedIn:** [Sebastian Spranger](https://www.linkedin.com/in/sebastian-spranger-62a467115/)  
+📂 **GitHub:** [Sebastian’s GitHub](https://github.com/Spranger-Sebastian)  
+🔗 **Full Project Repository:** [GitHub Link](https://github.com/Spranger-Sebastian/R-Project--Dr.-Semmelweis-and-the-Importance-of-Handwashing)  
